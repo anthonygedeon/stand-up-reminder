@@ -7,6 +7,21 @@
 
 import Cocoa
 
+let sounds = [
+    "Basso",
+    "Blow",
+    "Frog",
+    "Glass",
+    "Hero",
+    "Morse",
+    "Ping",
+    "Pop",
+    "Purr",
+    "Sosumi",
+    "Submarine",
+    "Funk"
+]
+
 class ViewController: NSViewController {
     
     
@@ -17,6 +32,11 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for sound in sounds {
+            soundChoice.addItem(withTitle: sound)
+        }
+            
+        
         // Do any additional setup after loading the view.
 //        bottomLine.shadow = NSShadow()
 //        bottomLine.layer?.shadowRadius = 3.0
@@ -26,11 +46,23 @@ class ViewController: NSViewController {
 //        bottomLine.layer?.shadowOffset = CGSize(width: 1, height: 3)
     }
     
+    @IBAction func playSound(_ sender: Any) {
+        
+        if let sound = soundChoice.selectedItem {
+            print(sound.title)
+            NSSound(named: sound.title)?.play()
+        }
+        
+        if toggleSound {
+            NSSound().stop()
+        }
+        
+    }
+    
     @IBAction func checkbox(_ sender: Any) {
         toggleSound = !toggleSound
         soundChoice.isHidden = toggleSound
     }
-    
     
     override func viewWillAppear() {
         let color: CGFloat = 0.05
@@ -39,3 +71,5 @@ class ViewController: NSViewController {
         view.window?.backgroundColor = NSColor(red: color, green: color, blue: color, alpha: 0.8)
     }
 }
+
+

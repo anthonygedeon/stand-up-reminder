@@ -103,44 +103,14 @@
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-8b-suY">
                                 <rect key="frame" x="168" y="122" width="137" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Boop" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JkI-0C-Fof" id="HJw-xL-NpH">
+                                <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="HJw-xL-NpH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="D8f-Ga-dyY">
-                                        <items>
-                                            <menuItem title="Boop" state="on" id="JkI-0C-Fof"/>
-                                            <menuItem title="Breeze" id="g7s-8q-ber"/>
-                                            <menuItem title="Bubble" id="vaL-Wx-4W9"/>
-                                            <menuItem title="Crystal" id="bFy-r7-GFI">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Heroine" id="Iag-Zs-AYt">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Jump" id="i6R-iu-zCr">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Mezzo" id="bwU-Th-L9p">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Pluck" id="I8K-CI-gqU">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Pong" id="6XZ-gw-DLs">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Sonar" id="hLx-bS-R2O">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Sonumi" id="2mt-go-x1B">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                            <menuItem title="Submerge" id="5Ku-Vh-Z1x">
-                                                <modifierMask key="keyEquivalentModifierMask"/>
-                                            </menuItem>
-                                        </items>
-                                    </menu>
+                                    <menu key="menu" id="D8f-Ga-dyY"/>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="playSound:" target="XfG-lQ-9wD" id="mdc-TW-fds"/>
+                                </connections>
                             </popUpButton>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKM-tt-Hlh">
                                 <rect key="frame" x="18" y="45" width="324" height="16"/>
