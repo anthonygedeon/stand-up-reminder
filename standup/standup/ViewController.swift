@@ -24,7 +24,6 @@ let sounds = [
 
 class ViewController: NSViewController {
     
-    
     @IBOutlet var bottomLine: NSBox!
     @IBOutlet var soundChoice: NSPopUpButton!
     var toggleSound: Bool = false
@@ -35,7 +34,6 @@ class ViewController: NSViewController {
         for sound in sounds {
             soundChoice.addItem(withTitle: sound)
         }
-            
         
         // Do any additional setup after loading the view.
 //        bottomLine.shadow = NSShadow()
