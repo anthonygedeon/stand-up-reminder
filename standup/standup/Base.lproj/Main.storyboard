@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="NSView safe area layout guides" minToolsVersion="12.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -72,18 +73,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="360" height="330"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CYs-Gk-J8B">
-                                <rect key="frame" x="18" y="214" width="324" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CYs-Gk-J8B">
+                                <rect key="frame" x="143" y="204" width="74" height="28"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Stand" id="uf4-Jy-EtT">
                                     <font key="font" size="24" name="HelveticaNeue-Medium"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U96-Gu-wFF">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U96-Gu-wFF">
                                 <rect key="frame" x="68" y="127" width="93" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="check" title="Play sound" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="31Y-aw-4BC">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -100,9 +99,8 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-8b-suY">
-                                <rect key="frame" x="168" y="122" width="137" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A3Q-8b-suY">
+                                <rect key="frame" x="266" y="122" width="39" height="25"/>
                                 <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="HJw-xL-NpH">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -112,13 +110,30 @@
                                     <action selector="playSound:" target="XfG-lQ-9wD" id="mdc-TW-fds"/>
                                 </connections>
                             </popUpButton>
-                            <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fM-an-q3C">
-                                <rect key="frame" x="32" y="244" width="296" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="stand-icon" id="qgr-2Z-0ch"/>
-                                <color key="contentTintColor" red="1" green="0.2824286873964752" blue="0.13893258525510976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4fM-an-q3C">
+                                <rect key="frame" x="143" y="235" width="75" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4fM-an-q3C" secondAttribute="height" multiplier="5:4" id="6q1-Ug-ZQ0"/>
+                                    <constraint firstAttribute="width" constant="75" id="sjH-A6-usF"/>
+                                    <constraint firstAttribute="width" secondItem="4fM-an-q3C" secondAttribute="height" multiplier="5:4" id="uge-af-2sr"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="stand" id="qgr-2Z-0ch"/>
                             </imageView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="4fM-an-q3C" firstAttribute="centerX" secondItem="CYs-Gk-J8B" secondAttribute="centerX" id="0Fd-eu-nia"/>
+                            <constraint firstItem="A3Q-8b-suY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="U96-Gu-wFF" secondAttribute="trailing" constant="8" symbolic="YES" id="52M-xZ-zt0"/>
+                            <constraint firstItem="U96-Gu-wFF" firstAttribute="centerY" secondItem="A3Q-8b-suY" secondAttribute="centerY" id="9E6-tp-cB4"/>
+                            <constraint firstItem="4fM-an-q3C" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="AwN-ZJ-yHB"/>
+                            <constraint firstItem="CYs-Gk-J8B" firstAttribute="centerX" secondItem="vpU-IF-ToN" secondAttribute="centerX" id="CbO-3g-i8w"/>
+                            <constraint firstItem="Kn5-Sm-Nae" firstAttribute="top" secondItem="U96-Gu-wFF" secondAttribute="bottom" constant="11" id="PXr-tK-izm"/>
+                            <constraint firstItem="CYs-Gk-J8B" firstAttribute="top" secondItem="4fM-an-q3C" secondAttribute="bottom" constant="3" id="R1f-7a-hl8"/>
+                            <constraint firstItem="U96-Gu-wFF" firstAttribute="leading" secondItem="Kn5-Sm-Nae" secondAttribute="leading" id="aHf-Eh-xbx"/>
+                            <constraint firstItem="4fM-an-q3C" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="35" id="mjr-iI-zdG"/>
+                            <constraint firstItem="vpU-IF-ToN" firstAttribute="trailing" secondItem="A3Q-8b-suY" secondAttribute="trailing" constant="39" id="p5M-cx-fgD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CJT-sj-ocw"/>
+                        <viewLayoutGuide key="layoutMargins" id="vpU-IF-ToN"/>
                     </view>
                     <connections>
                         <outlet property="soundChoice" destination="A3Q-8b-suY" id="vAf-hA-MHW"/>
@@ -130,6 +145,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="stand-icon" width="232" height="250"/>
+        <image name="stand" width="232" height="250"/>
     </resources>
 </document>
