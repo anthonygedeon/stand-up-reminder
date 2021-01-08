@@ -115,7 +115,7 @@
                             <imageView focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fM-an-q3C">
                                 <rect key="frame" x="32" y="244" width="296" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="standup" id="qgr-2Z-0ch"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" focusRingType="none" alignment="left" imageScaling="proportionallyDown" image="stand-icon" id="qgr-2Z-0ch"/>
                                 <color key="contentTintColor" red="1" green="0.2824286873964752" blue="0.13893258525510976" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                         </subviews>
@@ -130,6 +130,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="standup" width="232" height="250"/>
+        <image name="stand-icon" width="232" height="250"/>
     </resources>
 </document>
