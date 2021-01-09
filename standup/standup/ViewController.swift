@@ -24,7 +24,7 @@ let sounds = [
 
 class ViewController: NSViewController {
     
-    @IBOutlet var bottomLine: NSBox!
+    @IBOutlet var borderBottom: NSView!
     @IBOutlet var soundChoice: NSPopUpButton!
     var toggleSound: Bool = false
 
@@ -35,13 +35,20 @@ class ViewController: NSViewController {
             soundChoice.addItem(withTitle: sound)
         }
         
-        // Do any additional setup after loading the view.
-//        bottomLine.shadow = NSShadow()
-//        bottomLine.layer?.shadowRadius = 3.0
-//        bottomLine.layer?.shadowOpacity = 1.0
-//        bottomLine.layer?.shadowColor = NSColor.red.cgColor
-//        bottomLine.layer?.shadowRadius = 15.0
-//        bottomLine.layer?.shadowOffset = CGSize(width: 1, height: 3)
+        // what does this do???
+        view.wantsLayer = true
+        view.superview?.wantsLayer = true
+        
+        borderBottom.wantsLayer = true
+        borderBottom.shadow = NSShadow()
+        
+        borderBottom.layer?.cornerRadius = 5.0
+        borderBottom.layer?.shadowColor = CGColor.white
+        borderBottom.layer?.shadowPath = CGPath.init(rect: CGRect.init(x: 0, y: 0, width: 320, height: 1), transform: nil)
+        borderBottom.layer?.shadowOffset = CGSize(width: 0, height: -5.0)
+        borderBottom.layer?.shadowRadius = 5
+        borderBottom.layer?.shadowOpacity = 1.0
+        
     }
     
     @IBAction func playSound(_ sender: Any) {
