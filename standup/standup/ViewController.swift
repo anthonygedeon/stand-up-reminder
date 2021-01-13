@@ -24,6 +24,7 @@ let sounds = [
 
 class ViewController: NSViewController {
     
+    @IBOutlet var notifyText: NSTextField!
     @IBOutlet var borderBottom: NSView!
     @IBOutlet var soundChoice: NSPopUpButton!
     var toggleSound: Bool = false
@@ -42,12 +43,16 @@ class ViewController: NSViewController {
         borderBottom.wantsLayer = true
         borderBottom.shadow = NSShadow()
         
+        let height: CGFloat = 1
+        let width: CGFloat = 280
+        let shadowSize: CGFloat = 50
+        let contactRect = CGRect(x: -shadowSize, y: height - (shadowSize * 0.4), width: width + shadowSize * 2, height: shadowSize)
         borderBottom.layer?.cornerRadius = 5.0
         borderBottom.layer?.shadowColor = CGColor.white
-        borderBottom.layer?.shadowPath = CGPath.init(rect: CGRect.init(x: 0, y: 0, width: 320, height: 1), transform: nil)
+        borderBottom.layer?.shadowPath = CGMutablePath(ellipseIn: contactRect, transform: nil)
         borderBottom.layer?.shadowOffset = CGSize(width: 0, height: -5.0)
         borderBottom.layer?.shadowRadius = 5
-        borderBottom.layer?.shadowOpacity = 1.0
+        borderBottom.layer?.shadowOpacity = 0.1
         
     }
     
@@ -62,6 +67,18 @@ class ViewController: NSViewController {
             NSSound().stop()
         }
         
+    }
+    
+    @IBAction func rangeSlider(_ sender: NSSlider) {
+        
+        let currentValue = sender.integerValue
+        
+        if currentValue == 0 {
+            notifyText.stringValue = "Notify on the hour"
+        } else {
+            notifyText.stringValue = "Notify at \(currentValue) minutes past"
+        }
+    
     }
     
     @IBAction func checkbox(_ sender: Any) {
