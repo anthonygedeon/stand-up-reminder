@@ -36,6 +36,8 @@ class ViewController: NSViewController {
             soundChoice.addItem(withTitle: sound)
         }
         
+        print(Timer().fire())
+        
         // what does this do???
         view.wantsLayer = true
         view.superview?.wantsLayer = true
@@ -59,7 +61,6 @@ class ViewController: NSViewController {
     @IBAction func playSound(_ sender: Any) {
         
         if let sound = soundChoice.selectedItem {
-            print(sound.title)
             NSSound(named: sound.title)?.play()
         }
         
@@ -70,13 +71,36 @@ class ViewController: NSViewController {
     }
     
     @IBAction func rangeSlider(_ sender: NSSlider) {
-        
+
         let currentValue = sender.integerValue
         
         if currentValue == 0 {
             notifyText.stringValue = "Notify on the hour"
         } else {
             notifyText.stringValue = "Notify at \(currentValue) minutes past"
+        }
+        
+        var totalTime = currentValue * 60
+        
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { time in
+            print("time start")
+            
+            totalTime -= 1
+            
+            print(totalTime)
+            
+            if totalTime == 0 {
+                time.invalidate()
+                if let sound = self.soundChoice.selectedItem {
+                    NSSound(named: sound.title)?.play()
+                }
+                
+                if self.toggleSound {
+                    NSSound().stop()
+                }
+
+            }
+            
         }
     
     }
