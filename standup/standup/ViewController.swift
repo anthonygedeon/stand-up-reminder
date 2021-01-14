@@ -27,8 +27,14 @@ class ViewController: NSViewController {
     @IBOutlet var notifyText: NSTextField!
     @IBOutlet var borderBottom: NSView!
     @IBOutlet var soundChoice: NSPopUpButton!
+    
     var toggleSound: Bool = false
-
+    var timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self,
+                                     selector: #selector(timerFire),
+                                     userInfo: nil,
+                                     repeats: true)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,34 +86,15 @@ class ViewController: NSViewController {
             notifyText.stringValue = "Notify at \(currentValue) minutes past"
         }
         
-        var totalTime = currentValue * 60
-        
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { time in
-            print("time start")
-            
-            totalTime -= 1
-            
-            print(totalTime)
-            
-            if totalTime == 0 {
-                time.invalidate()
-                if let sound = self.soundChoice.selectedItem {
-                    NSSound(named: sound.title)?.play()
-                }
-                
-                if self.toggleSound {
-                    NSSound().stop()
-                }
-
-            }
-            
-        }
-    
     }
     
     @IBAction func checkbox(_ sender: Any) {
         toggleSound = !toggleSound
         soundChoice.isHidden = toggleSound
+    }
+    
+    @objc func timerFire() {
+        print("I ran")
     }
     
     override func viewWillAppear() {
