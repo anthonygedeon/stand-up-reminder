@@ -28,12 +28,8 @@ class ViewController: NSViewController {
     @IBOutlet var borderBottom: NSView!
     @IBOutlet var soundChoice: NSPopUpButton!
     
-    var toggleSound: Bool = false
-    var timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self,
-                                     selector: #selector(timerFire),
-                                     userInfo: nil,
-                                     repeats: true)
+    var toggleSound = false
+    var timerReached = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +37,6 @@ class ViewController: NSViewController {
         for sound in sounds {
             soundChoice.addItem(withTitle: sound)
         }
-        
-        print(Timer().fire())
         
         // what does this do???
         view.wantsLayer = true
@@ -84,6 +78,28 @@ class ViewController: NSViewController {
             notifyText.stringValue = "Notify on the hour"
         } else {
             notifyText.stringValue = "Notify at \(currentValue) minutes past"
+        }
+        
+        let timeInSeconds: TimeInterval = Double(currentValue)
+        
+        print(timeInSeconds)
+        
+        print(currentValue)
+        
+        var _ = Timer.scheduledTimer(withTimeInterval: timeInSeconds, repeats: true) { timer in
+            
+            if self.toggleSound {
+                timer.invalidate()
+            } else {
+            
+                print("Timer has started")
+                
+                if let sound = self.soundChoice.selectedItem {
+                    NSSound(named: sound.title)?.play()
+                }
+            }
+            
+
         }
         
     }
