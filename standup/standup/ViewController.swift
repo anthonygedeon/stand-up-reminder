@@ -31,6 +31,13 @@ class ViewController: NSViewController {
     var toggleSound = false
     var timerReached = 0
     
+    override func viewWillAppear() {
+        let color: CGFloat = 0.05
+        super.viewWillAppear()
+        view.window?.isOpaque = true
+        view.window?.backgroundColor = NSColor(red: color, green: color, blue: color, alpha: 0.8)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,34 +65,39 @@ class ViewController: NSViewController {
         
     }
     
-    @IBAction func playSound(_ sender: Any) {
-        
-        if let sound = soundChoice.selectedItem {
+    func playPickedSound() {
+        if let sound = self.soundChoice.selectedItem {
             NSSound(named: sound.title)?.play()
         }
-        
+    }
+    
+    func stopPlayingSound() {
         if toggleSound {
             NSSound().stop()
         }
-        
+    }
+    
+    @IBAction func playSound(_ sender: Any) {
+        self.playPickedSound()
+        self.stopPlayingSound()
     }
     
     @IBAction func rangeSlider(_ sender: NSSlider) {
-
+        
+        var timeInSeconds: TimeInterval
+        
         let currentValue = sender.integerValue
         
         if currentValue == 0 {
             notifyText.stringValue = "Notify on the hour"
+            timeInSeconds = 3600
         } else {
             notifyText.stringValue = "Notify at \(currentValue) minutes past"
+            timeInSeconds = Double(currentValue) * 60
         }
         
-        let timeInSeconds: TimeInterval = Double(currentValue)
-        
         print(timeInSeconds)
-        
-        print(currentValue)
-        
+    
         var _ = Timer.scheduledTimer(withTimeInterval: timeInSeconds, repeats: true) { timer in
             
             if self.toggleSound {
@@ -94,9 +106,7 @@ class ViewController: NSViewController {
             
                 print("Timer has started")
                 
-                if let sound = self.soundChoice.selectedItem {
-                    NSSound(named: sound.title)?.play()
-                }
+                self.playPickedSound()
             }
             
 
@@ -109,16 +119,6 @@ class ViewController: NSViewController {
         soundChoice.isHidden = toggleSound
     }
     
-    @objc func timerFire() {
-        print("I ran")
-    }
-    
-    override func viewWillAppear() {
-        let color: CGFloat = 0.05
-        super.viewWillAppear()
-        view.window?.isOpaque = true
-        view.window?.backgroundColor = NSColor(red: color, green: color, blue: color, alpha: 0.8)
-    }
 }
 
 
