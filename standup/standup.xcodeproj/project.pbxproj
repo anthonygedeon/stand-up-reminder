@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0102792C25A7EBB20020A52A /* stand-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0102792B25A7EBB20020A52A /* stand-icon.png */; };
+		0179194C25BE661E007F47BD /* StandTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0179194B25BE661E007F47BD /* StandTimerViewController.swift */; };
 		01B067AF25A4086700C118E1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B067AE25A4086700C118E1 /* AppDelegate.swift */; };
 		01B067B125A4086700C118E1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01B067B025A4086700C118E1 /* ViewController.swift */; };
 		01B067B325A4086800C118E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01B067B225A4086800C118E1 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		0102792B25A7EBB20020A52A /* stand-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stand-icon.png"; sourceTree = "<group>"; };
+		0179194B25BE661E007F47BD /* StandTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandTimerViewController.swift; sourceTree = "<group>"; };
 		01B067AB25A4086700C118E1 /* standup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = standup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01B067AE25A4086700C118E1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01B067B025A4086700C118E1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			children = (
 				0102792A25A7EBB20020A52A /* images */,
 				01B067AE25A4086700C118E1 /* AppDelegate.swift */,
+				0179194B25BE661E007F47BD /* StandTimerViewController.swift */,
 				01B067B025A4086700C118E1 /* ViewController.swift */,
 				01B067B225A4086800C118E1 /* Assets.xcassets */,
 				01B067B425A4086800C118E1 /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			files = (
 				01B067B125A4086700C118E1 /* ViewController.swift in Sources */,
 				01B067AF25A4086700C118E1 /* AppDelegate.swift in Sources */,
+				0179194C25BE661E007F47BD /* StandTimerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
