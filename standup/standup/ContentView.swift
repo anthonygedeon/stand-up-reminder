@@ -12,6 +12,16 @@ struct ContentView: View {
     @State private var isPlaying = false
     @State var playControlImage = "play-icon"
     
+    enum FontFamily: String {
+        case bold = "Poppins-Bold"
+        case semiBold = "Poppins-SemiBold"
+        case medium = "Poppins-Medium"
+        
+        func font() -> String {
+            return self.rawValue
+        }
+    }
+    
     var body: some View {
 
         ZStack {
@@ -39,14 +49,12 @@ struct ContentView: View {
                     
                         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0, content: {
                             Text("15:00")
-                                .font(.system(size: 72))
-                                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                .font(Font.custom(FontFamily.bold.font(), size: 62))
+                                .foregroundColor(.white)
                                 
                             Text("Until stand up")
-                                .font(.system(size: 14))
+                                .font(Font.custom(FontFamily.medium.font(), size: 14))
                                 .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
-                                .fontWeight(.medium)
                                 .padding(.bottom, 8)
                             
                             Button(action: {
