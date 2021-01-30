@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var isPlaying = false
-    @State var playControlImage = "play-icon"
+    @State private var playControlImage = "play-icon"
     
     enum FontFamily: String {
         case bold = "Poppins-Bold"
@@ -36,6 +36,7 @@ struct ContentView: View {
                     .padding(.trailing, 20)
                 
                 ZStack {
+                    
                         Circle()
                             .stroke(
                                 Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)),
@@ -75,44 +76,59 @@ struct ContentView: View {
                                      
                         })
 
-                    HStack {
-                        Circle()
-                            .trim(from: 0, to: 0.50)
-                            .stroke(
-                                Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-                                style: StrokeStyle(lineWidth: 10,
-                                                   lineCap: .round,
-                                                   lineJoin: CGLineJoin.miter,
-                                                   miterLimit: 0,
-                                                   dashPhase: 0
-                                )
-                                
-                            )
-                            .rotationEffect(.degrees(270.0))
-                            
-                    }
                     
-                    HStack {
-                        Circle()
-                            .trim(from: 0.499, to: 0.50)
-                            .stroke(
-                                Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
-                                style: StrokeStyle(lineWidth: 21,
-                                                   lineCap: .round,
-                                                   lineJoin: CGLineJoin.miter,
-                                                   miterLimit: 0,
-                                                   dashPhase: 0
-                                )
-                                
+                    Circle()
+                        .trim(from: 0, to: 0.50)
+                        .stroke(
+                            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+                            style: StrokeStyle(lineWidth: 10,
+                                               lineCap: .round,
+                                               lineJoin: CGLineJoin.miter,
+                                               miterLimit: 0,
+                                               dashPhase: 0
                             )
-                            .rotationEffect(.degrees(270.0))
                             
-                    }
-                    
+                        )
+                        .rotationEffect(.degrees(270.0))
+                            
+                    Circle()
+                        .trim(from: 0.499, to: 0.50)
+                        .stroke(
+                            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+                            style: StrokeStyle(lineWidth: 21,
+                                               lineCap: .round,
+                                               lineJoin: CGLineJoin.miter,
+                                               miterLimit: 0,
+                                               dashPhase: 0
+                            )
+                            
+                        )
+                        .rotationEffect(.degrees(270.0))
+                                
                 }
                 
-            }).padding(.bottom, 32)
-
+                
+                
+            }).padding(.bottom, 48)
+            
+            if isPlaying {
+                
+                VStack(alignment: .center, content: {
+                    
+                    Button(action: {
+                        print("cancel")
+                    }, label: {
+                        Text("cancel").font(Font.custom(FontFamily.medium.font(), size: 14))
+                            .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
+                        
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    
+                })
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+                .padding(.bottom, 14)
+                
+            }
         }
         .frame(width: 340, height: 350, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 
