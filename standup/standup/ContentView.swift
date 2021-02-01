@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ContentView: View {
     
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let formatter = DateComponentsFormatter()
+    let timeToKeepTrack = 900
+    let soundToPlay = "Ping"
+    
     @State private var isPlaying = false
     @State private var playControlImage = "play-icon"
+    @State private var defaultTime = "15:00"
+    @State private var timeRemainingInMinutes = 900
+    @State private var progressMade: CGFloat = 0.0 /// start of progress ring
     
     enum FontFamily: String {
         case bold = "Poppins-Bold"
@@ -22,18 +31,38 @@ struct ContentView: View {
         }
     }
     
+    func reset() {
+        isPlaying = false
+        defaultTime = "15:00"
+        timeRemainingInMinutes = timeToKeepTrack
+        playControlImage = "play-icon"
+        progressMade = 0.0
+    }
+    
+    init() {
+        reset()
+        
+        formatter.collapsesLargestUnit = true
+        formatter.allowedUnits = [.minute, .second]
+    }
+    
     var body: some View {
-
+        
         ZStack {
         
             Color(#colorLiteral(red: 0.965734899, green: 0.6711420417, blue: 0.1805486381, alpha: 1))
                 .ignoresSafeArea()
             
             VStack(alignment: .trailing, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                Image("settings-icon")
-                    .scaledToFit()
-                    .padding(.top, 0)
-                    .padding(.trailing, 20)
+                Button(action: {
+                    print("settings")
+                    
+                }, label: {
+                    Image("settings-icon")
+                        .scaledToFit()
+                        .padding(.top, 0)
+                        .padding(.trailing, 20)
+                }).buttonStyle(PlainButtonStyle())
                 
                 ZStack {
                     
@@ -49,10 +78,27 @@ struct ContentView: View {
                             )
                     
                         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0, content: {
-                            Text("15:00")
+                            Text("\(defaultTime)")
                                 .font(Font.custom(FontFamily.bold.font(), size: 62))
                                 .foregroundColor(.white)
+                                .onReceive(timer, perform: { _ in
+                                    if isPlaying && timeRemainingInMinutes > 0 {
+                                        timeRemainingInMinutes -= 1
+                                        defaultTime = formatter.string(from: TimeInterval(timeRemainingInMinutes))!
+    
+                                        let progressRingIncrement = 1.0 / Double(timeToKeepTrack)
+                                        progressMade += CGFloat(progressRingIncrement)
+                                        print(progressRingIncrement)
+                                    }
+                                    
+                                    if defaultTime == "0" {
+                                        print("play sound")
+                                        NSSound(named: soundToPlay)?.play()
+                                        reset()
+                                    }
+                                })
                                 
+                            
                             Text("Until stand up")
                                 .font(Font.custom(FontFamily.medium.font(), size: 14))
                                 .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
@@ -78,7 +124,7 @@ struct ContentView: View {
 
                     
                     Circle()
-                        .trim(from: 0, to: 0.50)
+                        .trim(from: 0, to: progressMade)
                         .stroke(
                             Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
                             style: StrokeStyle(lineWidth: 10,
@@ -92,7 +138,7 @@ struct ContentView: View {
                         .rotationEffect(.degrees(270.0))
                             
                     Circle()
-                        .trim(from: 0.499, to: 0.50)
+                        .trim(from: progressMade, to: progressMade + 0.0001)
                         .stroke(
                             Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
                             style: StrokeStyle(lineWidth: 21,
@@ -116,7 +162,7 @@ struct ContentView: View {
                 VStack(alignment: .center, content: {
                     
                     Button(action: {
-                        print("cancel")
+                        reset()
                     }, label: {
                         Text("cancel").font(Font.custom(FontFamily.medium.font(), size: 14))
                             .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
