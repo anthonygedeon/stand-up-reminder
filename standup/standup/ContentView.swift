@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var defaultTime = "15:00"
     @State private var timeRemainingInMinutes = 900
     @State private var progressMade: CGFloat = 0.0 /// start of progress ring
+    @State private var isAppActive = true
     
     enum FontFamily: String {
         case bold = "Poppins-Bold"
@@ -42,7 +43,6 @@ struct ContentView: View {
     init() {
         reset()
         
-        formatter.collapsesLargestUnit = true
         formatter.allowedUnits = [.minute, .second]
     }
     
@@ -88,7 +88,6 @@ struct ContentView: View {
     
                                         let progressRingIncrement = 1.0 / Double(timeToKeepTrack)
                                         progressMade += CGFloat(progressRingIncrement)
-                                        print(progressRingIncrement)
                                     }
                                     
                                     if defaultTime == "0" {

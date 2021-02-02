@@ -6,3 +6,15 @@
 //
 
 import SwiftUI
+
+struct SettingsView: View {
+    var body: some View {
+        Text("Settings")
+    }
+}
+
+struct SettingsViewPreview: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
+    }
+}
