@@ -50,7 +50,7 @@ struct ContentView: View {
         
         ZStack {
         
-            Color(#colorLiteral(red: 0.965734899, green: 0.6711420417, blue: 0.1805486381, alpha: 1))
+            Color(#colorLiteral(red: 0.03828236833, green: 0.02331713773, blue: 0.06831399351, alpha: 1))
                 .ignoresSafeArea()
             
             VStack(alignment: .trailing, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
@@ -58,7 +58,7 @@ struct ContentView: View {
                     print("settings")
                     
                 }, label: {
-                    Image("settings-icon")
+                    Image("more-icon")
                         .scaledToFit()
                         .padding(.top, 0)
                         .padding(.trailing, 20)
@@ -68,7 +68,7 @@ struct ContentView: View {
                     
                         Circle()
                             .stroke(
-                                Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)),
+                                Color(#colorLiteral(red: 0.1098371074, green: 0.1097947285, blue: 0.1139102057, alpha: 1)),
                                 style: StrokeStyle(lineWidth: 10,
                                                    lineCap: .round,
                                                    lineJoin: CGLineJoin.miter,
@@ -78,6 +78,11 @@ struct ContentView: View {
                             )
                     
                         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 0, content: {
+                            
+                            Text("stand in")
+                                .font(Font.custom(FontFamily.medium.font(), size: 14))
+                                .foregroundColor(Color(#colorLiteral(red: 0.4145596325, green: 0.4039255083, blue: 0.4037293196, alpha: 1)))
+                            
                             Text("\(defaultTime)")
                                 .font(Font.custom(FontFamily.bold.font(), size: 62))
                                 .foregroundColor(.white)
@@ -97,12 +102,6 @@ struct ContentView: View {
                                     }
                                 })
                                 
-                            
-                            Text("Until stand up")
-                                .font(Font.custom(FontFamily.medium.font(), size: 14))
-                                .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
-                                .padding(.bottom, 8)
-                            
                             Button(action: {
                                 isPlaying = !isPlaying
                                 
@@ -125,7 +124,7 @@ struct ContentView: View {
                     Circle()
                         .trim(from: 0, to: progressMade)
                         .stroke(
-                            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+                            Color(#colorLiteral(red: 0.9557656646, green: 0.2603653669, blue: 0.08132243901, alpha: 1)),
                             style: StrokeStyle(lineWidth: 10,
                                                lineCap: .round,
                                                lineJoin: CGLineJoin.miter,
@@ -139,7 +138,7 @@ struct ContentView: View {
                     Circle()
                         .trim(from: progressMade, to: progressMade + 0.0001)
                         .stroke(
-                            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)),
+                            Color(#colorLiteral(red: 0.9557656646, green: 0.2603653669, blue: 0.08132243901, alpha: 1)),
                             style: StrokeStyle(lineWidth: 21,
                                                lineCap: .round,
                                                lineJoin: CGLineJoin.miter,
@@ -163,8 +162,9 @@ struct ContentView: View {
                     Button(action: {
                         reset()
                     }, label: {
-                        Text("cancel").font(Font.custom(FontFamily.medium.font(), size: 14))
-                            .foregroundColor(Color(#colorLiteral(red: 0.9925253987, green: 0.8607291579, blue: 0.7022601962, alpha: 1)))
+                        Text("Stop".uppercased()).font(Font.custom(FontFamily.medium.font(), size: 14))
+                            .foregroundColor(Color(#colorLiteral(red: 0.9557656646, green: 0.2603653669, blue: 0.08132243901, alpha: 1)))
+                            
                         
                     })
                     .buttonStyle(PlainButtonStyle())
