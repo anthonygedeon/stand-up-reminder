@@ -21,7 +21,6 @@ struct ContentView: View {
     @State private var timeRemainingInMinutes = 900
     @State private var progressMade: CGFloat = 0.0 /// start of progress ring
     @State private var isAppActive = true
-    @State private var timerBackground = Date()
     
     enum FontFamily: String {
         case bold = "Poppins-Bold"
@@ -88,10 +87,10 @@ struct ContentView: View {
                                 .font(Font.custom(FontFamily.bold.font(), size: 62))
                                 .foregroundColor(.white)
                                 .onReceive(NotificationCenter.default.publisher(for: NSWindow.didMiniaturizeNotification)) { _ in
-                                    print("old Date:", Date())
+                                    
                                 }
                                 .onReceive(NotificationCenter.default.publisher(for: NSWindow.didBecomeMainNotification)) { _ in
-                                    print("new Date:", Date())
+                
                                 }
                                 .onReceive(timer, perform: { _ in
                                     if isPlaying && timeRemainingInMinutes > 0 {
